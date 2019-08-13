@@ -43,7 +43,7 @@ module.exports = {
       {test:/\.css$/,use:['style-loader','css-loader']},//css文件匹配规则
       {test:/\.less$/,use:['style-loader','css-loader','less-loader']},//less匹配规则
       {test:/\.scss$/,use:['style-loader','css-loader','sass-loader']},//scss匹配规则
-      {test:/\.jpg$/,use:'url-loader?limit=2000&name=[Hash:8]-[name].[ext]'},//url匹配规则
+      {test:/\.(jpg|png)$/,use:'url-loader?limit=2000&name=[Hash:8]-[name].[ext]'},//url匹配规则
       {test:/\.(ttf|eot|svg|woff|woff2)$/,use:'url-loader'},//字体匹配规则
       {test:/\.js$/,use:'babel-loader',exclude:'/node_modules/'},//字体匹配规则
       {test:/\.vue$/,use:'vue-loader'},//vue匹配规则
