@@ -27,7 +27,8 @@ module.exports = {
   devServer:{
     open:true,
     hot:true,
-    contentBase:'src'
+    contentBase:'src',
+    port:3000
   },
   plugins:[
     new VueLoaderPlugin(),

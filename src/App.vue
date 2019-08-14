@@ -6,7 +6,7 @@
 		</transition>
 
         <!-- header区 -->
-        <mt-header fixed title="天下无难事"></mt-header>
+        <mt-header fixed title="世上无难事"></mt-header>
 
 
         <!-- 底部tabber区 -->
@@ -37,6 +37,7 @@
 <style lang="scss" scoped>
 .app-container{
     padding-top: 40px;
+    padding-bottom: 50px;
 	overflow-x: hidden;
 }
 .v-enter{
