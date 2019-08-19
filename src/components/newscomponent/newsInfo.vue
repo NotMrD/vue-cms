@@ -7,6 +7,7 @@
         </p>
         <hr>
         <div class="newsinfoContent" v-html="newsinfo.content"></div>
+        <comment-box></comment-box>
     </div>
 </template>
 
@@ -35,6 +36,7 @@
 
 <script>
 import {Toast} from "mint-ui"
+import comment from "../subcomponents/comment.vue"
 export default {
     data(){
         return{
@@ -50,12 +52,15 @@ export default {
             this.$http.get("api/getnew/"+this.id).then(result=>{
                 if(result.body.status===0){
                     this.newsinfo=result.body.message[0]
-                    console.log(this.newsinfo)
+                    // console.log(this.newsinfo)
                 }else{
                     Toast('获取新闻详情失败')
                 }
             })
         }
+    },
+    components:{
+        'comment-box':comment
     }
 }
 </script>
