@@ -3,9 +3,11 @@ import HomeContainer from './components/Tabbar/HomeContainer.vue'
 import MemberContainer from './components/Tabbar/MemberContainer.vue'
 import ShopcarContainer from './components/Tabbar/ShopcarContainer.vue'
 import SearchContainer from './components/Tabbar/SearchContainer.vue'
-import newsList from './components/newscomponent/newsList.vue'
-import newsInfo from './components/newscomponent/newsInfo.vue'
-import photoList from './components/photos/photoList.vue'
+import NewsList from './components/newscomponent/newsList.vue'
+import NewsInfo from './components/newscomponent/newsInfo.vue'
+import PhotoList from './components/photos/photoList.vue'
+import PhotoInfo from './components/photos/photoInfo.vue'
+import GoodsList from './components/goods/goodsList.vue'
 
 var router= new VueRouter({
     routes:[//配置路由规则
@@ -14,9 +16,11 @@ var router= new VueRouter({
         {path:'/member',component:MemberContainer},
         {path:'/shopcar',component:ShopcarContainer},
         {path:'/search',component:SearchContainer},
-        {path:'/home/newslist',component:newsList},
-        {path:'/home/newsinfo/:id',component:newsInfo},
-        {path:'/home/photolist',component:photoList},
+        {path:'/home/newslist',component:NewsList},
+        {path:'/home/newsinfo/:id',component:NewsInfo},
+        {path:'/home/photolist',component:PhotoList},
+        {path:'/home/photoInfo/:id',component:PhotoInfo},
+        {path:'/home/goodsList',component:GoodsList},
     ],
     linkActiveClass:'mui-active'//高亮类
 })
