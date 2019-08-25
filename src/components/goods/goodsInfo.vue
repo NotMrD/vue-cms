@@ -6,7 +6,7 @@
         @before-enter="beforeEnter"
         @enter="enter"
         @after-enter="afterEnter">
-         <div class="ball" v-show="ballflag"></div>
+         <div class="ball" v-show="ballflag" id="ball"></div>
         </transition>
        
 
@@ -27,7 +27,7 @@
                             <span class="now_price">￥{{goodsInfo.sell_price}}</span>
                         </p>
                         <p>购买数量：
-                            <numberBox></numberBox> 
+                            <numberBox @getCount="getSelectedCount" :max="goodsInfo.stock_quantity"></numberBox> 
                         </p>
                         <p>
                             <mt-button type="primary" size="small">立即购买</mt-button>
@@ -58,13 +58,16 @@
 <script>
 import Swiper from '../subcomponents/swiper.vue'
 import numberBox from '../subcomponents/numberBox.vue'
+
+         
 export default {
     data(){
         return{
             lunboList:[],
             id:this.$route.params.id,
             goodsInfo:[],
-            ballflag:false
+            ballflag:false,
+            selectedCount:1
         }
     },
     created(){
@@ -79,8 +82,6 @@ export default {
                         element.img=element.src
                     });
                      this.lunboList=result.body.message
-                      console.log(this.lunboList)
-                      console.log('ok')
                 }
             })
         },
@@ -105,12 +106,21 @@ export default {
             el.style.transform="translate(0,0)"
         },
         enter(el){
+            const ballPosition=document.getElementById("ball").getBoundingClientRect()
+            const badgePosition=document.getElementById("badge").getBoundingClientRect()
+            const xDist=badgePosition.left-ballPosition.left
+            const yDist=badgePosition.top-ballPosition.top
+
             el.offsetWidth;
-            el.style.transform="translate(93px,230px)"
+            el.style.transform=`translate(${xDist}px,${yDist}px)`
             el.style.transition="all 1s cubic-bezier(.44,-0.25,.55,1.32)"
         },
         afterEnter(el){
             this.ballflag=!this.ballflag
+        },
+        getSelectedCount(count){
+            this.selectedCount=count
+            console.log(this.selectedCount)
         }
     },
     components:{
