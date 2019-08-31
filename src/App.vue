@@ -6,7 +6,11 @@
 		</transition>
 
         <!-- header区 -->
-        <mt-header fixed title="世上无难事"></mt-header>
+        <mt-header fixed title="世上无难事">
+            <span slot="left" @click="goBack" v-show="flag">
+            <mt-button icon="back">返回</mt-button>
+            </span>
+        </mt-header>
 
 
         <!-- 底部tabber区 -->
@@ -21,7 +25,7 @@
 			</router-link>
 			<router-link class="mui-tab-item1" to="/shopcar">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-                    <span class="mui-badge" id="badge">0</span></span>
+                    <span class="mui-badge" id="badge">1</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item1" to="/search">
@@ -32,7 +36,30 @@
     </div>
 </template>
 <script>
-
+    export default{
+        data(){
+            return{
+                flag:false
+            }
+        },
+        methods:{
+            goBack(){
+                this.$router.go(-1)
+            }
+        },
+        created(){
+            this.flag=this.$route.path==="/home"?false:true
+        },
+        watch:{
+            "$route.path":function(newval){
+                if(newval=="/home"){
+                    this.flag=false
+                }else{
+                    this.flag=true
+                }
+            }
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
